@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prt Setting</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <script type="text/javascript">
+    function calculation() {
+
+      // Set Print Unit
+      const pUnit = parseFloat(document.getElementById("inputPUnit").value) || 0;
+
+      // Add Colors (color1..n, input1..n)
+      const color1 = parseFloat(document.getElementById("input1").value) || 0;
+      const color2 = parseFloat(document.getElementById("input2").value) || 0;
+      const color3 = parseFloat(document.getElementById("input3").value) || 0;
+
+      // Add Lables (result1A, result1B, result1C, result2A, result2B, result2C,..., resultnA, resultnB, resultnC)
+      let result1A = result1B = result1C = result2A = result2B = result2C = result3A = result3B = result3C = 0;
+
+      if (pUnit == 0)
+      {
+        alert("There is no Print Unit value. Please enter a value");
+        return;
+      }
+
+      if (color1 < 0 || color2 < 0 || color3 < 0)
+      {
+        alert("Please enter only 0 or positive numbers.");
+        return;
+      }
+      
+      // First setting
+      if (color1 > 0)
+      {
+        result1A = 0;                           // A : pre-input
+        result1B = Math.floor(color1 / pUnit);  // B : quotient
+        result1C = color1 % pUnit;              // C : remainder
+      }
+      
+      // Second setting
+      if (color2 > 0)
+      {
+        if (color1 > 0)
+        {
+          if (result1C == 0)
+            result2A = 0;
+          else if ((pUnit - result1C) >= color2)
+            result2A = color2;
+          else
+            result2A = (pUnit - result1C);
+        }
+        else
+          result2A = 0;
+        
+        result2B = Math.floor((color2 - result2A) / pUnit);
+        result2C = (color2 - result2A) % pUnit;
+      }
+      
+      // 3th setting
+      if (color3 > 0)
+      {
+        if (color2 > 0)
+        {
+          if (result2C == 0)
+          {
+            if (result2B == 0)
+            {
+              result3A = (pUnit - (result1C + result2A) >= color3) ? color3 : pUnit - (result1C + result2A) ;
+            }
+            else
+              result3A = 0;
+          }
+          else if ((pUnit - result2C) >= color3)
+            result3A = color3;
+          else
+            result3A = (pUnit - result2C);
+        }
+        else if (color1 > 0)
+        {
+          if (result1C == 0)
+            result3A = 0;
+          else if ((pUnit - result1C) >= color3)
+            result3A = color3;
+          else
+            result3A = (pUnit - result1C);
+        }
+        else
+          result3A = 0;
+        
+        result3B = Math.floor((color3 - result3A) / pUnit);
+        result3C = (color3 - result3A) % pUnit;
+      }
+
+      document.getElementById("result1B").textContent = result1B;
+      document.getElementById("result1C").textContent = result1C;
+      document.getElementById("result2A").textContent = result2A;
+      document.getElementById("result2B").textContent = result2B;
+      document.getElementById("result2C").textContent = result2C;
+      document.getElementById("result3A").textContent = result3A;
+      document.getElementById("result3B").textContent = result3B;
+      document.getElementById("result3C").textContent = result3C;
+
+      const resultCount = (result1B + result2B + result3B) + (result1C > 0 ? 1 : 0) + (result2C > 0 ? 1 : 0) + (result3C > 0 ? 1 : 0);
+      document.getElementById("resultCount").textContent = resultCount;
+    }
+  </script> 
+</head>
+<body>
+  <div class="container">
+  <div class="row">
+    <div class="col-auto">
+      <label for="inputPUnit" class="form-label">Print Unit</label>
+      <input type="number" class="form-control" id="inputPUnit" placeholder="Input Print Unit" value="56">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-auto">
+      <label for="colorInput1" class="form-label">Color1</label>
+      <input type="color" class="form-control form-control-color" id="colorInput1" value="#FCFDF9" title="Choose your color">
+      <input type="number" class="form-control" min="0" id="input1" placeholder="Input Number" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');if(window.event.keyCode==13){calculation();}">
+      <p>------------- <span id="result1A"></span></p>
+      <p>1 Set -----> <span id="result1B"></span></p>
+      <p>1 Remain > <span id="result1C"></span></p>
+    </div>
+    <div class="col-auto">
+      <label for="colorInput2" class="form-label">Color2</label>
+      <input type="color" class="form-control form-control-color" id="colorInput2" value="#D7DADB" title="Choose your color">
+      <input type="number" class="form-control" min="0" id="input2" placeholder="Input Number" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');if(window.event.keyCode==13){calculation();}">
+      <p>2 Pre -----> <span id="result2A"></span></p>
+      <p>2 Set -----> <span id="result2B"></span></p>
+      <p>2 Remain > <span id="result2C"></span></p>
+    </div>
+    <div class="col-auto">
+      <label for="colorInput3" class="form-label">Color3</label>
+      <input type="color" class="form-control form-control-color" id="colorInput3" value="#DEC6BB" title="Choose your color">
+      <input type="number" class="form-control" min="0" id="input3" placeholder="Input Number" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');if(window.event.keyCode==13){calculation();}">
+      <p>3 Pre -----> <span id="result3A"></span></p>
+      <p>3 Set -----> <span id="result3B"></span></p>
+      <p>3 Remain > <span id="result3C"></span></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-auto">
+      <button id="calBtn" class="btn btn-primary mb-3" onclick="calculation()">Calculate</button>
+    </div>
+    <p>Count of Sets : <span id="resultCount">0</span></p>
+  </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
