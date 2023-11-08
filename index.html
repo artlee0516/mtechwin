@@ -80,16 +80,15 @@
   </header>
 
   <!-- Section-->
-  <section class="py-5">  
+  <section class="py-3">  
     <div class="container text-center">
       <div class="row align-items-center">
         <div class="col">
           <label for="inputprintUnit" class="form-label">Print Unit</label>
-          <input type="number" class="form-control-lg w-25" id="inputprintUnit" placeholder="Input Print Unit" value="56" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
-          <div>--------------------------</div>
+          <input type="number" class="form-control-lg" id="inputprintUnit" placeholder="Input Print Unit" value="56" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
         </div>
       </div>
-      <div class="row align-items-center">
+      <div class="row align-items-center mt-3">
         <div class="col card h-100">
           <label for="colorinput1" class="form-label">color 1</label>
           <input type="color" class="form-control form-control-color" id="colorinput1" value="#FCFDF9" title="Choose your color">
@@ -105,9 +104,9 @@
           <input type="color" class="form-control form-control-color" id="colorinput2" value="#D7DADB" title="Choose your color">
           <input type="number" class="form-control form-control-lg input-number" min="0" id="input2" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');if(window.event.keyCode==13){calculation();}">
           <div class="col">
-            <div>1 Pre -----> <span class="preNum"></span></div>
-            <div>1 Set -----> <span class="setNum"></span></div>
-            <div>1 Remain > <span class="remNum"></span></div>
+            <div>2 Pre -----> <span class="preNum"></span></div>
+            <div>2 Set -----> <span class="setNum"></span></div>
+            <div>2 Remain > <span class="remNum"></span></div>
           </div>        
         </div>
         <div class="col card h-100">
@@ -115,44 +114,44 @@
           <input type="color" class="form-control form-control-color" id="colorinput3" value="#DEC6BB" title="Choose your color">
           <input type="number" class="form-control form-control-lg input-number" min="0" id="input3" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');if(window.event.keyCode==13){calculation();}">
           <div class="col">
-            <div>1 Pre -----> <span class="preNum"></span></div>
-            <div>1 Set -----> <span class="setNum"></span></div>
-            <div>1 Remain > <span class="remNum"></span></div>
+            <div>3 Pre -----> <span class="preNum"></span></div>
+            <div>3 Set -----> <span class="setNum"></span></div>
+            <div>3 Remain > <span class="remNum"></span></div>
           </div>        
         </div>
         <div class="col card h-100">
           <label for="colorinput4" class="form-label">color 4</label>
-          <input type="color" class="form-control form-control-color" id="colorinput4" value="#000000" title="Choose your color">
+          <input type="color" class="form-control form-control-color" id="colorinput4" value="#FFFFFF" title="Choose your color">
           <input type="number" class="form-control form-control-lg input-number" min="0" id="input4" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');if(window.event.keyCode==13){calculation();}">
           <div class="col">
-            <div>1 Pre -----> <span class="preNum"></span></div>
-            <div>1 Set -----> <span class="setNum"></span></div>
-            <div>1 Remain > <span class="remNum"></span></div>
+            <div>4 Pre -----> <span class="preNum"></span></div>
+            <div>4 Set -----> <span class="setNum"></span></div>
+            <div>4 Remain > <span class="remNum"></span></div>
           </div>        
         </div>
         <div class="col card h-100">
           <label for="colorinput5" class="form-label">color 5</label>
-          <input type="color" class="form-control form-control-color" id="colorinput5" value="#000000" title="Choose your color">
+          <input type="color" class="form-control form-control-color" id="colorinput5" value="#FFFFFF" title="Choose your color">
           <input type="number" class="form-control form-control-lg input-number" min="0" id="input5" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');if(window.event.keyCode==13){calculation();}">
           <div class="col">
-            <div>1 Pre -----> <span class="preNum"></span></div>
-            <div>1 Set -----> <span class="setNum"></span></div>
-            <div>1 Remain > <span class="remNum"></span></div>
+            <div>5 Pre -----> <span class="preNum"></span></div>
+            <div>5 Set -----> <span class="setNum"></span></div>
+            <div>5 Remain > <span class="remNum"></span></div>
           </div>        
         </div>
       </div>
     </div>
   </section>
-  <div class="row align-items-center">
+
+  <div class="row align-items-center mt-3">
     <div class="col text-center">
-      <button id="calBtn" class="btn btn-primary mb-3" onclick="calculation()">Calculate</button>
-      <div class="text-center">Count of Sets : <span id="resultSetCount">0</span></div>
-      <div>--------------------------</div>
+      <button id="calBtn" class="btn btn-primary mb-2" onclick="calculation()">Calculate</button>
+      <div class="text-center mb-5">Count of Sets : <span id="resultSetCount">0</span></div>
     </div>
   </div>
 
   <!-- Footer-->
-  <footer class="py-1 bg-dark">
+  <footer class="py-2 bg-dark">
     <div class="container"><p class="m-0 text-center text-white">Copyright &copy; mtechwin 2023</p></div>
   </footer>
 
